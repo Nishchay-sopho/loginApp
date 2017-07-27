@@ -1,6 +1,8 @@
 package com.example.nishchay.loginapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        usernameEditText = (EditText) findViewById(R.id.usernameEditText);
-        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
-        registerTextView = (TextView) findViewById(R.id.registerTextView);
-        loginButton = (Button) findViewById(R.id.loginBtn);
+        usernameEditText = findViewById(R.id.usernameEditText);
+        passwordEditText = findViewById(R.id.passwordEditText);
+        registerTextView = findViewById(R.id.registerTextView);
+        loginButton = findViewById(R.id.loginBtn);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +53,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        registerTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                register();
+            }
+        });
+
+    }
+
+    private void register(){
+        Intent intent=new Intent(MainActivity.this,RegisterActivity.class);
+        startActivity(intent);
     }
 
     private void doLogin() {
